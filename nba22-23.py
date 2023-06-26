@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 # Lendo base de dados das estatisticas jogadores e equipes da temporada 2022-2023
 
 
-times_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/Outras%20bases/teste/Team%20Stats%202022-2023.csv"
-pts_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/Outras%20bases/Players-stats-2022-2023.csv"
-ast_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/Outras%20bases/Players-stats-2022-2023AST.csv"
-reb_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/Outras%20bases/Players-stats-2022-2023REB.csv"
+#times_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/Outras%20bases/teste/Team%20Stats%202022-2023.csv"
+#pts_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/Outras%20bases/Players-stats-2022-2023.csv"
+#ast_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/Outras%20bases/Players-stats-2022-2023AST.csv"
+#reb_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/Outras%20bases/Players-stats-2022-2023REB.csv"
 
 
 times = pd.read_csv(times_url, sep= ";")
