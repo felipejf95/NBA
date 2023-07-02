@@ -9,12 +9,13 @@ times_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/dados/Team%20
 pts_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/dados/Players-stats-2022-2023.csv"
 ast_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/dados/Players-stats-2022-2023AST.csv"
 reb_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/dados/Players-stats-2022-2023REB.csv"
-sixers = pd.read_csv("teste.csv")
+sixer_url = "https://raw.githubusercontent.com/felipejf95/NBA/main/dados/Team-stats-2.csv"
 
 times = pd.read_csv(times_url, sep= ";")
 jogadores_pts = pd.read_csv(pts_url, sep= ";")
 jogadores_ast = pd.read_csv(ast_url, sep= ";")
 jogadores_reb = pd.read_csv(reb_url, sep= ";")
+sixers = pd.read_csv(sixer_url)
 
 
 # Filtrando os líderes de cada estatistica
@@ -53,6 +54,17 @@ embiid_noharden = sixers[sixers['-'] == 'Embiid no Harden']
 embiid_noharden_w = embiid_noharden['VIT'].values[0]
 embiid_noharden_d = embiid_noharden['DER'].values[0]
 
+
+# Estatisticas Kings sem Sabonis
+
+no_sabonis = sixers[sixers['-'] == 'No Sabonis']
+with_sabonis = sixers[sixers['-'] == 'Sabonis']
+
+no_sabonis_w = no_sabonis['VIT'].values[0]
+no_sabonis_d = no_sabonis['DER'].values[0]
+
+with_sabonis_w = with_sabonis['VIT'].values[0]
+with_sabonis_d = with_sabonis['DER'].values[0]
 
 
 # Pontos, rebotes e assistencias dos times e proporção do jogador em relação ao time
@@ -141,7 +153,7 @@ adicionar_valores_barras(barras2, altura_d)
 # fig_ast.savefig('grafico_ast.png', dpi = 300)
 # fig_reb.savefig('grafico_reb,png', dpi = 300)
 
-
+# fig_six.savefig('grafico_six.png', dpi = 300) 
 
 
 plt.show()
