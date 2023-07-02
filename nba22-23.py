@@ -108,7 +108,7 @@ ax_reb.set_title('Comparação de Rebotes por jogo\n'
                   f'Domantas Sabonis representa {porcentagem_rebote:.2f}% dos rebotes do time')
 ax_reb.text(0, rebote_lider, f'{porcentagem_rebote:.2f}%', ha='center', va='bottom')
 
-# Grafico sem um dos jogadores
+# Grafico sem um dos jogadores do 76ers
 
 barras = ['Sem Harden', '',  'Sem Embiid', '', 'Harden sem Embiid', '', '', 'Embiid sem Harden']
 
@@ -132,19 +132,45 @@ ax_six.legend()
 
 # Adicionar Valor acima das barras
 
-def adicionar_valores_barras(barras, alturas):
+def adicionar_valores_barras(barras, alturas, ax):
     for barra, altura in zip(barras, alturas):
         if altura:  # Verificar se a altura não é vazia ou nula
-            ax_six.annotate('{}'.format(altura),
+            ax.annotate('{}'.format(altura),
                         xy=(barra.get_x() + barra.get_width() / 2, altura),
                         xytext=(0, 3),
                         textcoords="offset points",
                         ha='center', va='bottom')
 
-adicionar_valores_barras(barras1, altura_w)
-adicionar_valores_barras(barras2, altura_d)
+adicionar_valores_barras(barras1, altura_w, ax_six)
+adicionar_valores_barras(barras2, altura_d, ax_six)
 
-## ax_six.text
+
+# Grafico dos Kings com e sem Domantas Sabonis
+
+fig_kings, ax_kings = plt.subplots()
+
+barras_kings = ['Com Sabonis', 'Sem Sabonis']
+
+largura_barra1 = 0.35
+
+posicao_barra1 = range(len(barras_kings))
+
+altura_vitorias = [with_sabonis_w, no_sabonis_w]
+altura_derrotas = [with_sabonis_d, no_sabonis_d]
+
+barras_kings1 = ax_kings.bar(posicao_barra1, altura_vitorias, largura_barra1, label = 'Vitorias')
+barras_kings2 = ax_kings.bar([p + largura_barra1 for p in posicao_barra1], altura_derrotas, largura_barra1, label = 'Derrotas')
+
+# Configurar os rótulos dos eixos e o título do gráfico
+ax_kings.set_ylabel('Record')
+ax_kings.set_title('Vitórias e Derrotas com e Sabonis')
+ax_kings.set_xticks(posicao_barra1)
+ax_kings.set_xticklabels(barras_kings)
+ax_kings.legend()
+
+adicionar_valores_barras(barras_kings1,altura_vitorias, ax_kings)
+adicionar_valores_barras(barras_kings2,altura_derrotas, ax_kings)
+
 
 
 # Exportando os gráficos
@@ -154,6 +180,7 @@ adicionar_valores_barras(barras2, altura_d)
 # fig_reb.savefig('grafico_reb,png', dpi = 300)
 
 # fig_six.savefig('grafico_six.png', dpi = 300) 
+fig_kings.savefig('grafico_kings.png', dpi = 300)
 
 
 plt.show()
